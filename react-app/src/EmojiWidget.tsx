@@ -30,13 +30,47 @@ function EmojiWidget() {
       };
 
     return(
-        <div>
-            <h1>Emoji Widget</h1>
-            <div>
+        <div style={
+            {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '100%',
+                width: '100vw',
+            }
+        }>
+            <h1>Vote for your favorite emoji!</h1>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '10px',
+                margin: '20px',
+                alignItems: 'center',
+                textAlign: 'center',
+            }}>
                 {emojis.map((emoji) => (
                     <button key={emoji.emoji} onClick={() => handleVote(emoji.emoji)}>
                         {emoji.emoji}
                     </button>
+                ))}
+            </div>
+            <div style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '10px',
+                margin: '20px',
+                alignItems: 'center',
+                textAlign: 'center',
+                border: '1px solid #ccc',
+                padding: '10px',
+                borderRadius: '5px',
+            }}>
+                {Object.entries(votes).map(([emoji, count]) => (
+                    <div key={emoji}>
+                        <span>{emoji}</span>
+                        <span>{count}</span>
+                    </div>
                 ))}
             </div>
         </div>
